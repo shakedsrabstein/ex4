@@ -41,6 +41,7 @@ public:
     ~Player() = default;
     Player& operator=(const Player& other) = default;
 
+    friend std::ostream& operator<<(std::ostream&, const Player& pl);
 
     void printInfo() const;
 
@@ -80,6 +81,9 @@ public:
 
     void setHp(int mHp);
 };
+
+//TODO
+//std::ostream& operator<<(std::ostream&, const Player& pl);
 
 
 #endif //EX2_PLAYER_H

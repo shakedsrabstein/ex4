@@ -19,6 +19,17 @@
 #include "Players/Healer.h"
 #include "Players/Warrior.h"
 #include "Exception.h"
+#include "Cards/Barfight.h"
+#include "Cards/Dragon.h"
+#include "Cards/Mana.h"
+#include "Cards/Gremlin.h"
+#include "Cards/Merchant.h"
+#include "Cards/Well.h"
+#include "Cards/Treasure.h"
+#include "Cards/Witch.h"
+#include "Players/Ninja.h"
+#include "Players/Warrior.h"
+#include "Players/Healer.h"
 #include <algorithm>
 #include <sstream>
 #include <random>

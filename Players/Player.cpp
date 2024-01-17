@@ -76,7 +76,7 @@ m_name(name),m_maxHP(maxHP >= 0 ? maxHP : DEF_MAX_HP) ,m_HP(maxHP >= 0 ? maxHP :
 /**printInfo: prints the stats of the called player
 * (The method don`t change the called player)
 */
-void Player::printInfo() const {
+//void Player::printInfo() const {
 //    cout << "Player Details:" << endl;
 //    cout << "Name: " << this->m_name << endl;
 //    cout << "Level: " << this->m_level << endl;
@@ -85,8 +85,8 @@ void Player::printInfo() const {
 //    cout << "Coins: " << this->m_coins << endl;
 
 
-    printPlayerInfo(this->m_name.c_str(), this->m_level, this->m_force , this->m_HP ,this->m_coins);
-}
+//    printPlayerInfo(this->m_name.c_str(), this->m_level, this->m_force , this->m_HP ,this->m_coins);
+//}
 
 void Player::addCoins(int toAdd) {
     if(toAdd <= 0){
