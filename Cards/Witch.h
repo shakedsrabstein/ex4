@@ -6,10 +6,21 @@
 #define EX4_WITCH_H
 
 
-#include "Card.h"
+#include "BattleCard.h"
 
-class Witch : public Card  {
-
+class Witch : public BattleCard  {
+public:
+    Witch();
+    ~Witch() override = default;
+    Witch(const Witch&) = default;
+    Witch& operator=(const Witch&) = default;
+    void printDetails(std::ostream&);
+    void applyEncounter(Player& player) override;
+private:
+    static const int WITCH_FORCE = 11;
+    static const int WITCH_LOOT = 2;
+    static const int WITCH_DAMAGE = 10;
+    static const int WITCH_POWER_DRAWING = 1;
 };
 
 

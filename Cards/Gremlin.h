@@ -7,9 +7,19 @@
 
 
 #include "Card.h"
+#include "BattleCard.h"
 
-class Gremlin  : public Card  {
-
+class Gremlin  : public BattleCard  {
+public:
+    Gremlin();
+    ~Gremlin() override = default;
+    Gremlin(const Gremlin&) = default;
+    Gremlin& operator=(const Gremlin&) = default;
+    void printDetails(std::ostream&) override;
+private:
+    static const int GREMLIN_FORCE = 5;
+    static const int GREMLIM_LOOT = 2;
+    static const int GREMLIN_DAMAGE = 10;
 };
 
 

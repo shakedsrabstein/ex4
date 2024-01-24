@@ -6,10 +6,19 @@
 #define EX4_DRAGON_H
 
 
-#include "Card.h"
+#include "BattleCard.h"
 
-class Dragon : public Card {
-
+class Dragon : public BattleCard {
+public:
+    Dragon();
+    ~Dragon() override = default;
+    Dragon(const Dragon&) = default;
+    Dragon& operator=(const Dragon&) = default;
+    void printDetails(ostream& os) override;
+    void applyEncounter(Player& player) override;
+private:
+    static const int DRAGON_FORCE = 25;
+    static const int DRAGON_LOOT = 1000;
 };
 
 
