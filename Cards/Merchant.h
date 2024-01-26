@@ -16,7 +16,6 @@ public:
     Merchant(const Merchant&) = default;
     Merchant& operator=(const Merchant&) = default;
     void applyEncounter(Player &player) override;
-    void printDetails(std::ostream &) const override;
     //a getter to the card's name
     string getName() const override
     {

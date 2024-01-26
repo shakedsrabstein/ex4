@@ -16,7 +16,6 @@ public:
     Mana(const Mana&) = default;
     Mana& operator=(const Mana&) = default;
     void applyEncounter(Player &player) override;
-    void printDetails(std::ostream &) const override;
     //a getter to the card's name
     string getName() const override{
         return "Mana";

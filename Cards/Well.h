@@ -15,7 +15,6 @@ public:
     ~Well() = default;
     Well(const Well&) = default;
     Well& operator=(const Well&) = default;
-    void printDetails(ostream& os) const override;
     void applyEncounter(Player& player) override;
     //a getter to the card's name (Well)
     string getName() const override{

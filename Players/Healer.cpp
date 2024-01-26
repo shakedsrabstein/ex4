@@ -3,3 +3,8 @@
 //
 
 #include "Healer.h"
+
+
+Healer::Healer(std::string name , int maxHP , int force) : Player(name,maxHP,force) {
+
+}

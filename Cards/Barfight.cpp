@@ -23,11 +23,3 @@ void Barfight::applyEncounter(Player &player)
     printBarfightMessage(isWarrior);
 }
 
-/**printDetails: printing the Barfight details
- *
- * @param os - the output stream where the print will be executed*/
-void Barfight::printDetails(std::ostream &os) const
-{
-    printCardDetails(os, this->getName());
-    printEndOfCardDetails(os);
-}

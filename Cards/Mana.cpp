@@ -21,10 +21,3 @@ void Mana::applyEncounter(Player &player)
     printManaMessage(!isHealer);
 }
 
-/**printDetails: printing the Mana card details
- * @param os - the output stream to the print*/
-void Mana::printDetails(std::ostream &os) const
-{
-    printCardDetails(os, this->getName());
-    printEndOfCardDetails(os);
-}

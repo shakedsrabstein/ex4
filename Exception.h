@@ -7,9 +7,17 @@
 #ifndef EX4_EXCEPTION_H
 #define EX4_EXCEPTION_H
 
-class DeckFileInvalidSize {
+class DeckFileInvalidSize : public std::exception{
 
 
+
+};
+
+class DeckFileNotFound : public std::exception{
+
+};
+
+class DeckFileFormatError : public std::exception{
 
 };
 

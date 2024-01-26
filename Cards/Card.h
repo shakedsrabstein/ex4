@@ -17,11 +17,24 @@ public:
     virtual ~Card() = default;
     Card& operator=(const Card& other) = default;
     virtual void applyEncounter(Player& player) = 0;
-    virtual void printDetails(std::ostream&) const = 0;
+    virtual void printDetails(std::ostream&) const;
     virtual string getName() const = 0;
+
+    friend std::ostream& operator<<(std::ostream& os, const Card& card) {
+        // Customize the output based on your class members
+        os << "Barfight details: " << "jjj" ;
+        return os;
+    }
+
+
+
+
+
+
 private:
     //Nothing private in the abstract class
 };
+
 
 
 #endif //EX4_Card_H

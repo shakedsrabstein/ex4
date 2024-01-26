@@ -38,7 +38,7 @@ public:
     * Here we are explicitly telling the compiler to use the default methods
    */
     Player(const Player&) = default;
-    ~Player() = default;
+    virtual ~Player() = default;
     Player& operator=(const Player& other) = default;
 
     friend std::ostream& operator<<(std::ostream&, const Player& pl);

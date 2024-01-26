@@ -1,7 +1,3 @@
-//
-// Created by spabl on 11/30/2023.
-//
-
 #include <iostream>
 #include "Player.h"
 #include <string>
@@ -63,14 +59,6 @@ Player::Player(const string name,int maxHP ,int force) {
 
 Player::Player(const string name,int maxHP ,int force) :
 m_name(name),m_maxHP(maxHP >= 0 ? maxHP : DEF_MAX_HP) ,m_HP(maxHP >= 0 ? maxHP : DEF_MAX_HP) , m_force(force > 0 ? force : DEF_FORCE) , m_coins(DEF_COINS),m_level(DEF_LEVEL){}
-
-
-
-
-
-
-
-
 
 
 /**printInfo: prints the stats of the called player
@@ -216,4 +204,10 @@ int Player::getHp() const {
 
 void Player::setHp(int mHp) {
     m_HP = mHp;
+}
+
+std::ostream& operator<<(std::ostream& os, const Player& pl) {
+    // Customize the output based on your class members
+    os << "Player: " << "aaaaa";
+    return os;
 }

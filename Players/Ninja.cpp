@@ -3,3 +3,9 @@
 //
 
 #include "Ninja.h"
+
+#include "string"
+
+Ninja::Ninja(std::string name , int maxHP , int force) : Player(name,maxHP,force) {
+
+}

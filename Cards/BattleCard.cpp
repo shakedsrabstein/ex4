@@ -4,12 +4,12 @@
 
 #include "BattleCard.h"
 
-void BattleCard::printDetails(std::ostream &os) const
-{
-    printCardDetails(os, this->getName());
-    printMonsterDetails(os, m_force, m_damage, m_loot, this->isDragon());
-    printEndOfCardDetails(os);
-}
+//void BattleCard::printDetails(std::ostream &os) const
+//{
+//    printCardDetails(os, this->getName());
+//    printMonsterDetails(os, m_force, m_damage, m_loot, this->isDragon());
+//    printEndOfCardDetails(os);
+//}
 
 /**applyEncounter: performing a battle between a monster and a player
  *

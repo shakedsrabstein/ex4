@@ -11,14 +11,6 @@ void Merchant::applyEncounter(Player &player)
     executeMerchantBuying(player, choice);
 }
 
-/**printDetails: print the merchant card details
- * @param os - the output stream*/
-void Merchant::printDetails(std::ostream &os) const
-{
-    printCardDetails(os, this->getName());
-    printEndOfCardDetails(os);
-}
-
 /**getValidMerchantChoice: this function reads the player choice and wont stop until he gets a valid one
  *
  * @param player - the player that encounter the merchant

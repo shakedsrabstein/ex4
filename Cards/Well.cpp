@@ -5,13 +5,6 @@
 #include "Well.h"
 #include "../Players/Ninja.h"
 
-/**printDetails: prints the details of the well card
- * @param os - the output stream*/
-void Well::printDetails(ostream& os) const
-{
-    printCardDetails(os, this->getName());
-    printEndOfCardDetails(os);
-}
 
 /**applyEncounter: handles the encounter of a player with the well card
  * if he is a ninja nothing will happen

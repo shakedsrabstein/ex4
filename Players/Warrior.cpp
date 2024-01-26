@@ -3,3 +3,7 @@
 //
 
 #include "Warrior.h"
+
+Warrior::Warrior(std::string name , int maxHP , int force) : Player(name,maxHP,force) {
+
+}

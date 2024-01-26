@@ -14,7 +14,6 @@ public:
     ~Treasure() = default;
     Treasure(const Treasure&) = default;
     Treasure& operator=(const Treasure&) = default;
-    void printDetails(std::ostream&) const override;
     void applyEncounter(Player& player) override;
     //a getter to the coin amount in the treasure chest
     int getCoinAmount() const
