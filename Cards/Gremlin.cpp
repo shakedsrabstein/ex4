@@ -6,11 +6,6 @@
 
 /**A default constructor for the gremlin
  * assigns in the default stats of a Gremlin*/
-Gremlin::Gremlin(): BattleCard(GREMLIN_FORCE, GREMLIN_DAMAGE, GREMLIM_LOOT)
+Gremlin::Gremlin(): BattleCard(GREMLIN_FORCE, GREMLIN_DAMAGE, GREMLIN_LOOT)
 {}
 
-void Gremlin::printDetails(std::ostream& os)
-{
-    string Name = "Gremlin";
-    this->printBattleCardDetails(os, Name, false);
-}

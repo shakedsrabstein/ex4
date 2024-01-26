@@ -8,11 +8,6 @@
 Witch::Witch(): BattleCard(WITCH_FORCE, WITCH_DAMAGE, WITCH_LOOT)
 {}
 
-void Witch::printDetails(std::ostream& os)
-{
-    string name = "Witch";
-    this->printBattleCardDetails(os, name, false);
-}
 
 /**applyEncounter: perform a fight with a witch
  * except the normal fighting rules when you lose to a witch you lose one power unit

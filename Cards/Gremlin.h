@@ -15,10 +15,13 @@ public:
     ~Gremlin() override = default;
     Gremlin(const Gremlin&) = default;
     Gremlin& operator=(const Gremlin&) = default;
-    void printDetails(std::ostream&) override;
+    //a getter to the monster's name
+    string getName() const override {
+        return "Gremlin";
+    }
 private:
     static const int GREMLIN_FORCE = 5;
-    static const int GREMLIM_LOOT = 2;
+    static const int GREMLIN_LOOT = 2;
     static const int GREMLIN_DAMAGE = 10;
 };
 

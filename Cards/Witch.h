@@ -14,8 +14,10 @@ public:
     ~Witch() override = default;
     Witch(const Witch&) = default;
     Witch& operator=(const Witch&) = default;
-    void printDetails(std::ostream&);
     void applyEncounter(Player& player) override;
+    string getName() const override {
+        return "Witch";
+    }
 private:
     static const int WITCH_FORCE = 11;
     static const int WITCH_LOOT = 2;

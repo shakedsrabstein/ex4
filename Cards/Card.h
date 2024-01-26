@@ -17,7 +17,8 @@ public:
     virtual ~Card() = default;
     Card& operator=(const Card& other) = default;
     virtual void applyEncounter(Player& player) = 0;
-    virtual void printDetails(std::ostream&) = 0;
+    virtual void printDetails(std::ostream&) const = 0;
+    virtual string getName() const = 0;
 private:
     //Nothing private in the abstract class
 };

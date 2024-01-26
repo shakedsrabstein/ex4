@@ -4,10 +4,10 @@
 
 #include "BattleCard.h"
 
-void BattleCard::printBattleCardDetails(std::ostream &os, const string& name, bool isDragon) const
+void BattleCard::printDetails(std::ostream &os) const
 {
-    printCardDetails(os, name);
-    printMonsterDetails(os, m_force, m_damage, m_loot, isDragon);
+    printCardDetails(os, this->getName());
+    printMonsterDetails(os, m_force, m_damage, m_loot, this->isDragon());
     printEndOfCardDetails(os);
 }
 
@@ -22,11 +22,15 @@ void BattleCard::applyEncounter(Player& player)
     if (m_force > player.getAttackStrength())
     {
         player.damage(m_damage);
+        //printing the battle outcome
+        printLossBattle(player.getMName(), this->getName());
     }
     //is the player won he will gain loot and will level up
     else
     {
         player.addCoins(m_loot);
         player.levelUp();
+        //printing the battle outcome
+        printWinBattle(player.getMName(), this->getName());
     }
 }
