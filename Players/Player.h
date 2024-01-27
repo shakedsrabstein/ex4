@@ -10,12 +10,18 @@ using namespace std;
 
 
 class Player {
+
+
     string m_name;
-    int m_maxHP;
-    int m_HP;
-    int m_force;
+
+protected:
     int m_coins;
+    int m_HP;
+    int m_maxHP;
+    int m_force;
     int m_level;
+
+
 
 public:
     int getMCoins() const;

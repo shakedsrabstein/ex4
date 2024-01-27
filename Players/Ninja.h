@@ -16,6 +16,11 @@ public:
 
     Ninja(std::string name , int maxHP = 100 , int force = 5);
 
+    void addCoins(int toAdd);
+
+
+
+
 };
 
 

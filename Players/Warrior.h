@@ -15,6 +15,8 @@ class Warrior : public Player {
 public:
     Warrior(string name , int maxHP = 100 , int force = 5);
 
+    int getAttackStrength() const;
+
 };
 
 

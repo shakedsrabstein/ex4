@@ -27,11 +27,7 @@ public:
     }
 
 
-
-
-
-
-private:
+    static void CreateCard(string cardStr);
     //Nothing private in the abstract class
 };
 

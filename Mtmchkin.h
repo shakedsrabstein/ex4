@@ -1,8 +1,14 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 
-
 #include <string>
+#include "Players/Player.h"
+#include "Cards//Card.h"
+#include <queue>
+
+enum class GameStatus {
+    Win, Loss, MidGame
+};
 
 class Mtmchkin{
 
@@ -49,6 +55,21 @@ public:
     *          int - number of rounds played
     */
     int getNumberOfRounds() const;
+
+
+protected:
+
+    queue<Card*> m_cardsQueue;
+
+    vector<Player*> m_players;
+
+//    GameStatus m_gameStatus;
+//    Player* m_player;
+//    int m_numOfCards;
+//    Card *m_cardsArray;
+//    int m_currCardIndex;
+//    const Card *m_currCard;
+
 };
 
 
