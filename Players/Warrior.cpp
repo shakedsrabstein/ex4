@@ -13,4 +13,8 @@ int Warrior::getAttackStrength() const {
     return this->m_level + (this->m_force * 2);
 }
 
+string Warrior::getJob() const {
+    return "Warrior";
+}
+
 

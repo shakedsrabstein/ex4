@@ -207,7 +207,24 @@ void Player::setHp(int mHp) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Player& pl) {
-    // Customize the output based on your class members
-    os << "Player: " << "aaaaa";
+    void printPlayerDetails(std::ostream &os, const std::string &name, const std::string &job, int level, int force, int HP, int coins);
+    printPlayerDetails(os,pl.getMName(),pl.getJob(),pl.getLevel(),pl.getForce(),pl.getHp(),pl.getMCoins());
     return os;
 }
+
+bool Player::hasWon() {
+    return m_level >= WIN_LEVEL;
+}
+
+bool Player::hasLost() {
+    return m_HP <= 0;
+}
+
+// Could use this function to retrieve dynamically in runtime the class name (and strip the added compiler characters).
+//string Player::getJob() const {
+//    // Use typeid to get type information
+//    const std::type_info& typeInfo = typeid(*this);
+//
+//    // Use name() to get the class name as a string
+//    return typeInfo.name();
+//}

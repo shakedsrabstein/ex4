@@ -41,4 +41,4 @@ add_executable(ex4
         Players/Healer.cpp
         Players/Healer.h
         Players/Leaderboard.cpp
-        Players/Leaderboard.h Cards/CardFactory.cpp Cards/CardFactory.h Players/PlayerFactory.cpp Players/PlayerFactory.h)
+        Players/Leaderboard.h Cards/CardFactory.cpp Cards/CardFactory.h Players/PlayerFactory.cpp Players/PlayerFactory.h Players/Players.h)

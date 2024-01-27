@@ -16,6 +16,10 @@ public:
     Healer(string name , int maxHP = 100 , int force = 5);
 
     void heal(int addHP);
+
+    string getJob() const;
+
+
 };
 
 

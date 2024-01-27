@@ -18,9 +18,7 @@ public:
 
     void addCoins(int toAdd);
 
-
-
-
+    string getJob() const;
 };
 
 

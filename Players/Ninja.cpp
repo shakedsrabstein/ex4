@@ -19,3 +19,7 @@ void Ninja::addCoins(int toAdd) {
     this->m_coins += toAdd;
 
 }
+
+string Ninja::getJob() const {
+    return "Ninja";
+}

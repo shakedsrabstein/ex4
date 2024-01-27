@@ -63,12 +63,28 @@ protected:
 
     vector<Player*> m_players;
 
+    vector<Player*> m_activePlayers;
+
+    vector<Player*> m_looserPlayers;
+
+    vector<Player*> m_winnerPlayers;
+
+    int m_currRound;
+
+
+
+
+
+
+
+
 //    GameStatus m_gameStatus;
 //    Player* m_player;
 //    int m_numOfCards;
 //    Card *m_cardsArray;
 //    int m_currCardIndex;
 //    const Card *m_currCard;
+
 
 };
 

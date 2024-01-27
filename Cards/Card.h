@@ -22,7 +22,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Card& card) {
         // Customize the output based on your class members
-        os << "Barfight details: " << "jjj" ;
+        card.printDetails(os);
         return os;
     }
 

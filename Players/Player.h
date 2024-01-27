@@ -13,6 +13,7 @@ class Player {
 
 
     string m_name;
+    string m_job;
 
 protected:
     int m_coins;
@@ -86,6 +87,14 @@ public:
     int getHp() const;
 
     void setHp(int mHp);
+
+    bool hasWon();
+
+    const int WIN_LEVEL = 10;
+
+    bool hasLost();
+
+    virtual string getJob() const = 0 ;
 };
 
 //TODO

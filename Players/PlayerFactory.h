@@ -1,5 +1,5 @@
-#ifndef EX4_PLAYERFACTORY_H
-#define EX4_PLAYERFACTORY_H
+//#ifndef EX4_PLAYERFACTORY_H
+//#define EX4_PLAYERFACTORY_H
 
 #include <map>
 #include <string>
@@ -8,7 +8,9 @@
 // Value-Defintions of the different String values
 
 enum PlayerTypes {
-    PT_Ninga
+    PT_Ninga ,
+    PT_Warrior,
+    PT_Healer
 };
 
 // Map to associate the strings with the enum values
@@ -19,12 +21,11 @@ class PlayerFactory {
 public:
 
     PlayerFactory();
-    ~PlayerFactory() = default;
-    static Player* createPlayer(string playerStr);
+    static Player* createPlayer(string playerJob, string playerName);
 
 };
 
 
 
 
-#endif //EX4_PLAYERFACTORY_H
+//#endif //EX4_PLAYERFACTORY_H

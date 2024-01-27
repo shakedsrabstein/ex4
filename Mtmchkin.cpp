@@ -1,5 +1,6 @@
 #include "Mtmchkin.h"
 #include "Players/Player.h"
+#include "utilities.h"
 #include "Cards/CardFactory.h"
 #include "Cards/Card.h"
 #include "Cards/Dragon.h"
@@ -14,13 +15,21 @@ vector<Player*>* loadPlayers();
 bool isValidPlayerName(string basicString);
 Player* getValidPlayerClass(string playerClass);
 
-Mtmchkin::Mtmchkin(const std::string& fileName) {
+Mtmchkin::Mtmchkin(const std::string& fileName) : m_looserPlayers() , m_winnerPlayers() , m_currRound(0) {
 
     // Load cards
     m_cardsQueue = *(loadCards(fileName));
 
     // Interactively get the number of players and player types.
     m_players = *(loadPlayers());
+
+    m_activePlayers = m_players;
+
+
+
+
+
+
 }
 
 bool isValidPlayerName(string playerName) {
@@ -41,8 +50,8 @@ bool isValidPlayerName(string playerName) {
     return true;
 }
 
-Player* getValidPlayerClass(string playerClass) {
-    return PlayerFactory::createPlayer(playerClass);
+Player* getValidPlayerClass(string playerClass , string playerName) {
+    return PlayerFactory::createPlayer(playerClass, playerName);
 }
 
 vector<Player*>* loadPlayers() {
@@ -76,7 +85,7 @@ vector<Player*>* loadPlayers() {
                 invalidInput = true;
             }
             Player* newPlayer = nullptr;
-            if (((newPlayer = getValidPlayerClass(playerJob)) == nullptr)) {
+            if (((newPlayer = getValidPlayerClass(playerJob,playerName)) == nullptr)) {
                 printInvalidClass();
                 invalidInput = true;
             } else {
@@ -124,19 +133,55 @@ queue<Card*>* loadCards(const std::string& fileName)
 void Mtmchkin::playRound() {
 
 
+    printRoundStartMessage(m_currRound);
+
+    Card*  currCard = m_cardsQueue.front();
+    m_cardsQueue.pop();
+    //for (Player* pl: m_activePlayers) {
+    for (std::vector<Player*>::iterator it = m_activePlayers.begin(); it != m_activePlayers.end(); ++it) {
+        Player* pl = *it;
+
+        printTurnStartMessage(pl->getMName());
+        currCard->applyEncounter(*pl);
+
+        if(pl->hasWon()){
+           m_activePlayers.erase(it);
+           m_winnerPlayers.push_back(pl);
+        } else if(pl->hasLost()){
+            m_activePlayers.erase(it);
+            m_looserPlayers.push_back(pl);
+        }
+        if(isGameOver()){
+            printGameEndMessage();
+        }
+    }
+    m_cardsQueue.push(currCard);
+    m_currRound++;
+}
+
+static void printPlayersSection(int* rank, vector<Player *> sectionVector) {
+    for (std::vector<Player*>::const_iterator  it = sectionVector.begin(); it != sectionVector.end(); ++it) {
+        printPlayerLeaderBoard((*rank)++,**it);
+    }
 }
 
 void Mtmchkin::printLeaderBoard() const {
-
+    printLeaderBoardStartMessage();
+    int rank = 1;
+    printPlayersSection(&rank,m_winnerPlayers);
+    printPlayersSection(&rank,m_activePlayers);
+    printPlayersSection(&rank,m_looserPlayers);
 }
 
 bool Mtmchkin::isGameOver() const {
-    return false;
+    return (m_activePlayers.size() == 0);
 }
 
 int Mtmchkin::getNumberOfRounds() const {
-    return 0;
+    return m_currRound;
 }
+
+
 
 
 

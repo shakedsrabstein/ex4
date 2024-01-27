@@ -22,7 +22,6 @@ class CardFactory {
 public:
 
     CardFactory();
-    ~CardFactory() = default;
     static Card* createCard(string cardStr);
 
 };

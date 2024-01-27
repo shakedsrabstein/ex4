@@ -17,6 +17,8 @@ public:
 
     int getAttackStrength() const;
 
+    string getJob() const;
+
 };
 
 

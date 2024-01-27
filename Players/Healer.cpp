@@ -22,8 +22,8 @@ void Healer::heal(int addHP){
     } else {
         this->m_HP += addHP;
     }
+}
 
-
-
-
+string Healer::getJob() const {
+    return "Healer";
 }
