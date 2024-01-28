@@ -73,26 +73,17 @@ vector<Player*>* loadPlayers() {
     bool invalidInput = false;
     for (int i = 1; i <= numPlayers; ++i) {
         do {
-            invalidInput = false;
             string playerName, playerJob;
             // Get player's name
-            printInsertPlayerMessage();
 
-//            std::string input;
-//            std::getline(std::cin, input);
-//            // Trim leading whitespaces
-//            input.erase(0, input.find_first_not_of(" \t\n\r\f\v"));
-//            std::istringstream iss(input);
-//            iss >> playerName >> playerJob;
+            if (!invalidInput) {
+                printInsertPlayerMessage();
+            }
 
-           // cin.ignore(); // Ignore the newline character left in the buffer
             getline(cin, playerName, ' '); // Read the name until space
             playerName.erase(0, playerName.find_first_not_of(" \t\n\r\f\v"));
             getline(cin >> ws, playerJob);
             playerJob.erase(0, playerJob.find_first_not_of(" \t\n\r\f\v"));
-
-
-
 
 
             if (!isValidPlayerName(playerName)) {
@@ -106,6 +97,7 @@ vector<Player*>* loadPlayers() {
                     invalidInput = true;
                 } else {
                     playersVec->push_back(newPlayer);
+                    invalidInput = false;
                 }
             }
         } while (invalidInput);
@@ -125,12 +117,12 @@ queue<Card*>* loadCards(const std::string& fileName)
 
     // Check if the file is open
     if (!inputFile.is_open()) {
-        std::cerr << "Error opening the file!" << std::endl;
+        //std::cerr << "Error opening the file!" << std::endl;
         throw DeckFileNotFound();
     }
 
     // Read lines from the file
-    int lineNum = 0;
+    int lineNum = 1;
     std::string line;
     while (std::getline(inputFile, line)) {
         try {
@@ -139,6 +131,10 @@ queue<Card*>* loadCards(const std::string& fileName)
             throw DeckFileFormatError(lineNum);
         }
         lineNum++;
+    }
+
+    if (1 == lineNum) {
+        throw DeckFileInvalidSize();
     }
 
     // Close the file

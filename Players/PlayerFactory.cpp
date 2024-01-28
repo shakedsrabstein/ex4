@@ -25,6 +25,11 @@ Player* PlayerFactory::createPlayer(std::string playerJob, std::string playerNam
         PlayerFactory::initiateFactory();
     }
 
+    auto it = s_map_pt_str2enumval.find(playerJob);
+    if (it == s_map_pt_str2enumval.end()) {
+        return nullptr;
+    }
+
     switch (s_map_pt_str2enumval[playerJob]) {
         case PlayerTypes::PT_Ninga:
             return new Ninja(playerName);

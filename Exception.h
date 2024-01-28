@@ -1,5 +1,5 @@
 #include <stdexcept>
-
+#include "string"
 #ifndef EX4_EXCEPTION_H
 #define EX4_EXCEPTION_H
 
@@ -40,7 +40,8 @@ public:
 
     // Constructor that takes a custom error message
     DeckFileFormatError(int lineNumber) {
-       errorMessage = "Deck File Error : File format error in line " + lineNumber ;
+
+       errorMessage = "Deck File Error: File format error in line " +std::to_string(lineNumber) ;
     }
 
 };

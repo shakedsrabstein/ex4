@@ -36,6 +36,10 @@ Card* CardFactory::createCard(std::string cardStr) {
         CardFactory::initiateFactory();
     }
 
+    auto it = s_mapstr2enumval.find(cardStr);
+    if (it == s_mapstr2enumval.end()) {
+        throw DeckFileFormatError();
+    }
 
     switch (s_mapstr2enumval[cardStr]) {
         case CardNames::CN_Dragon:
