@@ -9,3 +9,7 @@ Dragon::Dragon(): BattleCard(DRAGON_FORCE, INT_MAX, 1000)
  * @param os - the output stream
  * */
 
+void Dragon::applyEncounter(Player &player)
+{
+    applyBattleCardEncounter(player);
+}

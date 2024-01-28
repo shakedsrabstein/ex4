@@ -12,6 +12,7 @@ public:
     virtual string getName() const override {
         return "Dragon";
     }
+    void applyEncounter(Player &player) override;
 private:
     static const int DRAGON_FORCE = 25;
     static const int DRAGON_LOOT = 1000;

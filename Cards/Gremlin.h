@@ -15,6 +15,7 @@ public:
     string getName() const override {
         return "Gremlin";
     }
+    void applyEncounter(Player &player) override;
 private:
     static const int GREMLIN_FORCE = 5;
     static const int GREMLIN_LOOT = 2;

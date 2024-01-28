@@ -24,7 +24,7 @@ void Witch::applyEncounter(Player& player)
         }
 
     }
-    card->applyEncounter(player);
+    this->applyBattleCardEncounter(player);
     //its not a problem doing this after we reduced from the player's force - if he loosed he will lose now anyway
     //card->applyEncounter(player);
 

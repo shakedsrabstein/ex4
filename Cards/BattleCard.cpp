@@ -15,7 +15,7 @@
  *
  * @param player - the player that will fight the monster
  * */
-void BattleCard::applyEncounter(Player& player)
+void BattleCard::applyBattleCardEncounter(Player& player)
 {
     //checking who won the fight
     //if the player lost he will lose health

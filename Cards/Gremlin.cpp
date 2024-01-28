@@ -9,3 +9,7 @@
 Gremlin::Gremlin(): BattleCard(GREMLIN_FORCE, GREMLIN_DAMAGE, GREMLIN_LOOT)
 {}
 
+void Gremlin::applyEncounter(Player &player)
+{
+    applyBattleCardEncounter(player);
+}
