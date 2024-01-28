@@ -22,7 +22,7 @@ void Witch::applyEncounter(Player& player)
         player.buff(-WITCH_POWER_DRAWING);
     }
     //its not a problem doing this after we reduced from the player's force - if he loosed he will lose now anyway
-    card->applyEncounter(player);
+    //card->applyEncounter(player);
 
 
 }

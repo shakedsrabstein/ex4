@@ -11,7 +11,11 @@
 
 #include "CardFactory.h"
 
-CardFactory::CardFactory() {
+// Map to associate the strings with the enum values
+static std::map<std::string, CardNames> s_mapstr2enumval;
+bool CardFactory::initiated = false;
+
+void CardFactory::initiateFactory() {
     s_mapstr2enumval["Dragon"] = CardNames::CN_Dragon;
     s_mapstr2enumval["Barfight"] = CardNames::CN_Barfight;
     s_mapstr2enumval["Mana"] = CardNames::CN_Mana;
@@ -20,12 +24,18 @@ CardFactory::CardFactory() {
     s_mapstr2enumval["Well"] = CardNames::CN_Well;
     s_mapstr2enumval["Treasure"] = CardNames::CN_Treasure;
     s_mapstr2enumval["Witch"] = CardNames::CN_Witch;
+    CardFactory::initiated = true;
 
 }
 
 
 
 Card* CardFactory::createCard(std::string cardStr) {
+
+    if (!initiated) {
+        CardFactory::initiateFactory();
+    }
+
 
     switch (s_mapstr2enumval[cardStr]) {
         case CardNames::CN_Dragon:

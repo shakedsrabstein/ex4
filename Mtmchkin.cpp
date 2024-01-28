@@ -15,7 +15,7 @@ vector<Player*>* loadPlayers();
 bool isValidPlayerName(string basicString);
 Player* getValidPlayerClass(string playerClass);
 
-Mtmchkin::Mtmchkin(const std::string& fileName) : m_looserPlayers() , m_winnerPlayers() , m_currRound(0) {
+Mtmchkin::Mtmchkin(const std::string& fileName) : m_looserPlayers() , m_winnerPlayers() , m_currRound(1) {
 
     // Load cards
     m_cardsQueue = *(loadCards(fileName));
@@ -77,21 +77,38 @@ vector<Player*>* loadPlayers() {
             string playerName, playerJob;
             // Get player's name
             printInsertPlayerMessage();
-            cin.ignore(); // Ignore the newline character left in the buffer
+
+//            std::string input;
+//            std::getline(std::cin, input);
+//            // Trim leading whitespaces
+//            input.erase(0, input.find_first_not_of(" \t\n\r\f\v"));
+//            std::istringstream iss(input);
+//            iss >> playerName >> playerJob;
+
+           // cin.ignore(); // Ignore the newline character left in the buffer
             getline(cin, playerName, ' '); // Read the name until space
+            playerName.erase(0, playerName.find_first_not_of(" \t\n\r\f\v"));
             getline(cin >> ws, playerJob);
+            playerJob.erase(0, playerJob.find_first_not_of(" \t\n\r\f\v"));
+
+
+
+
+
             if (!isValidPlayerName(playerName)) {
                 printInvalidName();
                 invalidInput = true;
             }
-            Player* newPlayer = nullptr;
-            if (((newPlayer = getValidPlayerClass(playerJob,playerName)) == nullptr)) {
-                printInvalidClass();
-                invalidInput = true;
-            } else {
-                playersVec->push_back(newPlayer);
+            else {
+                Player *newPlayer = nullptr;
+                if (((newPlayer = getValidPlayerClass(playerJob, playerName)) == nullptr)) {
+                    printInvalidClass();
+                    invalidInput = true;
+                } else {
+                    playersVec->push_back(newPlayer);
+                }
             }
-        } while (!invalidInput);
+        } while (invalidInput);
     }
 
     return playersVec;
@@ -137,8 +154,7 @@ void Mtmchkin::playRound() {
 
     Card*  currCard = m_cardsQueue.front();
     m_cardsQueue.pop();
-    //for (Player* pl: m_activePlayers) {
-    for (std::vector<Player*>::iterator it = m_activePlayers.begin(); it != m_activePlayers.end(); ++it) {
+    for (std::vector<Player*>::iterator it = m_activePlayers.begin(); it != m_activePlayers.end();) {
         Player* pl = *it;
 
         printTurnStartMessage(pl->getMName());
@@ -150,6 +166,8 @@ void Mtmchkin::playRound() {
         } else if(pl->hasLost()){
             m_activePlayers.erase(it);
             m_looserPlayers.push_back(pl);
+        } else {
+            ++it;
         }
         if(isGameOver()){
             printGameEndMessage();
@@ -159,18 +177,26 @@ void Mtmchkin::playRound() {
     m_currRound++;
 }
 
-static void printPlayersSection(int* rank, vector<Player *> sectionVector) {
-    for (std::vector<Player*>::const_iterator  it = sectionVector.begin(); it != sectionVector.end(); ++it) {
-        printPlayerLeaderBoard((*rank)++,**it);
+static void printPlayersSection(int* rank, vector<Player *> sectionVector,bool order) {
+
+    if (order) {
+        for (std::vector<Player *>::const_reverse_iterator it = sectionVector.rbegin();
+             it != sectionVector.rend(); ++it) {
+            printPlayerLeaderBoard((*rank)++, **it);
+        }
+    } else {
+        for (std::vector<Player*>::const_iterator it = sectionVector.begin(); it != sectionVector.end(); ++it) {
+            printPlayerLeaderBoard((*rank)++,**it);
+        }
     }
 }
 
 void Mtmchkin::printLeaderBoard() const {
     printLeaderBoardStartMessage();
     int rank = 1;
-    printPlayersSection(&rank,m_winnerPlayers);
-    printPlayersSection(&rank,m_activePlayers);
-    printPlayersSection(&rank,m_looserPlayers);
+    printPlayersSection(&rank,m_winnerPlayers, false);
+    printPlayersSection(&rank,m_activePlayers,false);
+    printPlayersSection(&rank,m_looserPlayers,true);
 }
 
 bool Mtmchkin::isGameOver() const {

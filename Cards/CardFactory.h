@@ -14,14 +14,15 @@ enum CardNames {
 
 };
 
-// Map to associate the strings with the enum values
-static std::map<std::string, CardNames> s_mapstr2enumval;
+
 
 class CardFactory {
 
+    static bool initiated;
+
 public:
 
-    CardFactory();
+    static void initiateFactory();
     static Card* createCard(string cardStr);
 
 };

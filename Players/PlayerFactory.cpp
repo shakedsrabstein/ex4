@@ -4,18 +4,26 @@
 #include "Player.h"
 #include "Players.h"
 
+// Map to associate the strings with the enum values
+static std::map<std::string, PlayerTypes> s_map_pt_str2enumval;
+bool PlayerFactory::initiated = false;
 
-PlayerFactory::PlayerFactory() {
+void PlayerFactory::initiateFactory() {
 
     s_map_pt_str2enumval["Ninja"] = PlayerTypes::PT_Ninga;
     s_map_pt_str2enumval["Warrior"] = PlayerTypes:: PT_Warrior;
     s_map_pt_str2enumval["Healer"] = PlayerTypes::PT_Healer;
 
+    initiated = true;
 }
 
 
 
 Player* PlayerFactory::createPlayer(std::string playerJob, std::string playerName) {
+
+    if (!initiated) {
+        PlayerFactory::initiateFactory();
+    }
 
     switch (s_map_pt_str2enumval[playerJob]) {
         case PlayerTypes::PT_Ninga:

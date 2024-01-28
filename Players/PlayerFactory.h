@@ -13,14 +13,14 @@ enum PlayerTypes {
     PT_Healer
 };
 
-// Map to associate the strings with the enum values
-static std::map<std::string, PlayerTypes> s_map_pt_str2enumval;
 
 class PlayerFactory {
 
+    static bool initiated;
+
 public:
 
-    PlayerFactory();
+    static void initiateFactory();
     static Player* createPlayer(string playerJob, string playerName);
 
 };

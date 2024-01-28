@@ -52,47 +52,47 @@ public:
 
     void printInfo() const;
 
-    void addCoins(int toAdd);
+    virtual void addCoins(int toAdd);
 
-    bool pay(int toPay);
+    virtual bool pay(int toPay);
 
-    void heal(int addHP);
+    virtual void heal(int addHP);
 
-    void damage(int toReduce);
+    virtual void damage(int toReduce);
 
-    void levelUp();
+    virtual void levelUp();
 
-    void buff(int toAdd);
+    virtual void buff(int toAdd);
 
-    int getAttackStrength() const;
+    virtual int getAttackStrength() const;
 
-    bool isKnockedOut() const;
+    virtual bool isKnockedOut() const;
 
-    const string &getMName() const;
+    virtual const string &getMName() const;
 
-    void setMName(const string &mName);
+    virtual void setMName(const string &mName);
 
-    int getLevel() const;
+    virtual int getLevel() const;
 
-    void setLevel(int mLevel);
+    virtual void setLevel(int mLevel);
 
-    int getForce() const;
+    virtual int getForce() const;
 
-    void setForce(int mForce);
+    virtual void setForce(int mForce);
 
-    int getMaxHp() const;
+    virtual int getMaxHp() const;
 
-    void setMaxHp(int mMaxHp);
+    virtual void setMaxHp(int mMaxHp);
 
-    int getHp() const;
+    virtual int getHp() const;
 
-    void setHp(int mHp);
+    virtual void setHp(int mHp);
 
-    bool hasWon();
+    virtual bool hasWon();
 
     const int WIN_LEVEL = 10;
 
-    bool hasLost();
+    virtual bool hasLost();
 
     virtual string getJob() const = 0 ;
 };
