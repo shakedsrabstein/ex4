@@ -18,6 +18,6 @@ void Mana::applyEncounter(Player &player)
         player.heal(MANA_HEAL_AMOUNT);
     }
     //printing what happened
-    printManaMessage(!isHealer);
+    printManaMessage(isHealer);
 }
 

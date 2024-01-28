@@ -152,10 +152,11 @@ void Mtmchkin::playRound() {
 
     printRoundStartMessage(m_currRound);
 
-    Card*  currCard = m_cardsQueue.front();
-    m_cardsQueue.pop();
+
     for (std::vector<Player*>::iterator it = m_activePlayers.begin(); it != m_activePlayers.end();) {
         Player* pl = *it;
+        Card*  currCard = m_cardsQueue.front();
+        m_cardsQueue.pop();
 
         printTurnStartMessage(pl->getMName());
         currCard->applyEncounter(*pl);
@@ -172,8 +173,9 @@ void Mtmchkin::playRound() {
         if(isGameOver()){
             printGameEndMessage();
         }
+        m_cardsQueue.push(currCard);
     }
-    m_cardsQueue.push(currCard);
+
     m_currRound++;
 }
 
@@ -204,7 +206,7 @@ bool Mtmchkin::isGameOver() const {
 }
 
 int Mtmchkin::getNumberOfRounds() const {
-    return m_currRound;
+    return m_currRound - 1;
 }
 
 
