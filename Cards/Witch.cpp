@@ -19,8 +19,12 @@ void Witch::applyEncounter(Player& player)
     //if the player has lost the fight his will lose a power unit
     if (player.getAttackStrength() < m_force)
     {
-        player.buff(-WITCH_POWER_DRAWING);
+        if(player.getForce() - WITCH_POWER_DRAWING >= 0){
+            player.setForce(player.getForce() - WITCH_POWER_DRAWING);
+        }
+
     }
+    card->applyEncounter(player);
     //its not a problem doing this after we reduced from the player's force - if he loosed he will lose now anyway
     //card->applyEncounter(player);
 
