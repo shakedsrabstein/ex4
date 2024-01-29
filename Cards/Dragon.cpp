@@ -1,4 +1,5 @@
 #include "Dragon.h"
+#include "limits.h"
 
 /**Default constructor to the dragon*/
 Dragon::Dragon(): BattleCard(DRAGON_FORCE, INT_MAX, 1000)
