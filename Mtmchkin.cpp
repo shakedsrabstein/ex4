@@ -54,6 +54,23 @@ Player* getValidPlayerClass(string playerClass , string playerName) {
     return PlayerFactory::createPlayer(playerClass, playerName);
 }
 
+int getInt() {
+    int number;
+
+    // Try to read an integer from the user
+    if (std::cin >> number) {
+        // Input was successful, use the entered number
+        return number;
+    } else {
+        // Input failed, handle the error
+        // Clear the error state
+        std::cin.clear();
+        // Discard the invalid input
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        throw BadNumberError();
+    }
+}
+
 vector<Player*>* loadPlayers() {
     int numPlayers;
     vector<Player*>* playersVec = new vector<Player*>();
@@ -64,9 +81,21 @@ vector<Player*>* loadPlayers() {
     do {
         printEnterTeamSizeMessage();
         // Get the number of players
-        cin >> numPlayers;
-        if (!(numPlayers >= 2 && numPlayers <=6))
+        // cin >> numPlayers;
+
+        try {
+            numPlayers = getInt();
+        } catch (BadNumberError ex) {
+            //printInvalidTeamSize();
+            numPlayers = -1;
+
+        }
+
+        if (!(numPlayers >= 2 && numPlayers <=6) ){
             printInvalidTeamSize();
+        }
+
+
     } while  (!(numPlayers >= 2 && numPlayers <=6));
 
     // Loop through each player

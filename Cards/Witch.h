@@ -19,8 +19,7 @@ public:
         return "Witch";
     }
 private:
-// testyoav //TODO static const int WITCH_FORCE = 11;
-    static const int WITCH_FORCE = 10; // testyoav //TODO
+    static const int WITCH_FORCE = 11;
     static const int WITCH_LOOT = 2;
     static const int WITCH_DAMAGE = 10;
     static const int WITCH_POWER_DRAWING = 1;

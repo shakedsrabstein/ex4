@@ -46,4 +46,13 @@ public:
 
 };
 
+class BadNumberError : public MtmchkinBaseException{
+
+public:
+    BadNumberError() {
+        errorMessage = "The user entered a character when a number was expected";
+    }
+
+};
+
 #endif //EX4_EXCEPTION_H
