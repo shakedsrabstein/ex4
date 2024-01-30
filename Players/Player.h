@@ -13,15 +13,13 @@ class Player {
 
 
     string m_name;
-    string m_job;
 
 protected:
-    int m_coins;
-    int m_HP;
     int m_maxHP;
+    int m_HP;
     int m_force;
+    int m_coins;
     int m_level;
-
 
 
 public:
