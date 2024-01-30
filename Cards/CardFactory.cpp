@@ -37,7 +37,7 @@ std::shared_ptr<Card> CardFactory::createCard(string cardStr) {
         CardFactory::initiateFactory();
     }
 
-    auto it = s_mapstr2enumval.find(cardStr);
+    const map<string, CardNames>::iterator &it = s_mapstr2enumval.find(cardStr);
     if (it == s_mapstr2enumval.end()) {
         throw DeckFileFormatError();
     }
