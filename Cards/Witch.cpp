@@ -15,7 +15,6 @@ Witch::Witch(): BattleCard(WITCH_FORCE, WITCH_DAMAGE, WITCH_LOOT)
  * @param player - the player that fights the witch*/
 void Witch::applyEncounter(Player& player)
 {
-    BattleCard* card = this;
     //if the player has lost the fight his will lose a power unit
     if (player.getAttackStrength() < m_force)
     {
