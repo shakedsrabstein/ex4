@@ -4,6 +4,8 @@
 #include <map>
 #include <string>
 #include "Player.h"
+#include <memory>
+using namespace std;
 
 // Value-Defintions of the different String values
 
@@ -21,7 +23,7 @@ class PlayerFactory {
 public:
 
     static void initiateFactory();
-    static Player* createPlayer(string playerJob, string playerName);
+    static shared_ptr<Player>  createPlayer(string playerJob, string playerName);
 
 };
 

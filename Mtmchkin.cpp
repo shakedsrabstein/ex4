@@ -10,10 +10,10 @@
 using namespace std;
 
 // forward declarations
-std::shared_ptr<queue<Card*>> loadCards(const std::string& fileName);
-std::shared_ptr<vector<Player*>> loadPlayers();
+shared_ptr<queue<shared_ptr<Card>>> loadCards(const std::string& fileName);
+shared_ptr<vector<shared_ptr<Player>>> loadPlayers();
 bool isValidPlayerName(string basicString);
-Player* getValidPlayerClass(string playerClass);
+shared_ptr<Player> getValidPlayerClass(string playerClass);
 
 Mtmchkin::Mtmchkin(const std::string& fileName) : m_looserPlayers() , m_winnerPlayers() , m_currRound(1) {
 
@@ -44,7 +44,7 @@ bool isValidPlayerName(string playerName) {
     return true;
 }
 
-Player* getValidPlayerClass(string playerClass , string playerName) {
+shared_ptr<Player> getValidPlayerClass(string playerClass , string playerName) {
     return PlayerFactory::createPlayer(playerClass, playerName);
 }
 
@@ -65,9 +65,9 @@ int getInt() {
     }
 }
 
-std::shared_ptr<vector<Player*>> loadPlayers() {
+shared_ptr<vector<shared_ptr<Player>>> loadPlayers() {
     int numPlayers;
-    std::shared_ptr<vector<Player*>> playersVec = std::make_shared<vector<Player*>>();
+    shared_ptr<vector<shared_ptr<Player>>> playersVec = make_shared<vector<shared_ptr<Player>>>();
 
     printStartGameMessage();
 
@@ -114,7 +114,7 @@ std::shared_ptr<vector<Player*>> loadPlayers() {
                 invalidInput = true;
             }
             else {
-                Player *newPlayer = nullptr;
+                shared_ptr<Player>  newPlayer = nullptr;
                 if (((newPlayer = getValidPlayerClass(playerJob, playerName)) == nullptr)) {
                     printInvalidClass();
                     invalidInput = true;
@@ -131,9 +131,9 @@ std::shared_ptr<vector<Player*>> loadPlayers() {
 
 
 
-std::shared_ptr<queue<Card*>> loadCards(const std::string& fileName)
+shared_ptr<queue<shared_ptr<Card>>> loadCards(const std::string& fileName)
 {
-    std::shared_ptr<queue<Card*>> cardsQueue = std::make_shared<queue<Card*>>();
+    shared_ptr<queue<shared_ptr<Card>>> cardsQueue = make_shared<queue<shared_ptr<Card>>>();
 
     // Open a file for reading
     std::ifstream inputFile(fileName);
@@ -172,9 +172,9 @@ void Mtmchkin::playRound() {
     printRoundStartMessage(m_currRound);
 
 
-    for (std::vector<Player*>::iterator it = m_activePlayers.begin(); it != m_activePlayers.end();) {
-        Player* pl = *it;
-        Card*  currCard = m_cardsQueue.front();
+    for (vector<shared_ptr<Player>>::iterator it = m_activePlayers.begin(); it != m_activePlayers.end();) {
+        shared_ptr<Player> pl = *it;
+        shared_ptr<Card>  currCard = m_cardsQueue.front();
         m_cardsQueue.pop();
 
         printTurnStartMessage(pl->getMName());
@@ -198,15 +198,15 @@ void Mtmchkin::playRound() {
     m_currRound++;
 }
 
-static void printPlayersSection(int* rank, vector<Player *> sectionVector,bool order) {
+static void printPlayersSection(int* rank, vector<shared_ptr<Player>> sectionVector,bool order) {
 
     if (order) {
-        for (std::vector<Player *>::const_reverse_iterator it = sectionVector.rbegin();
+        for (std::vector<shared_ptr<Player>>::const_reverse_iterator it = sectionVector.rbegin();
              it != sectionVector.rend(); ++it) {
             printPlayerLeaderBoard((*rank)++, **it);
         }
     } else {
-        for (std::vector<Player*>::const_iterator it = sectionVector.begin(); it != sectionVector.end(); ++it) {
+        for (std::vector<shared_ptr<Player>>::const_iterator it = sectionVector.begin(); it != sectionVector.end(); ++it) {
             printPlayerLeaderBoard((*rank)++,**it);
         }
     }

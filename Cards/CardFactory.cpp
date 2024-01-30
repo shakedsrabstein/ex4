@@ -1,3 +1,4 @@
+#include <memory>
 #include "string"
 #include "Card.h"
 #include "Dragon.h"
@@ -30,7 +31,7 @@ void CardFactory::initiateFactory() {
 
 
 
-Card* CardFactory::createCard(std::string cardStr) {
+std::shared_ptr<Card> CardFactory::createCard(string cardStr) {
 
     if (!initiated) {
         CardFactory::initiateFactory();
@@ -43,28 +44,28 @@ Card* CardFactory::createCard(std::string cardStr) {
 
     switch (s_mapstr2enumval[cardStr]) {
         case CardNames::CN_Dragon:
-            return new Dragon();
+            return make_shared<Dragon>();
 
         case CardNames::CN_Barfight:
-            return new Barfight();
+            return make_shared<Barfight>();
 
         case CardNames::CN_Mana:
-            return new Mana();
+            return make_shared<Mana>();
 
         case CardNames::CN_Gremlin:
-            return new Gremlin();
+            return make_shared<Gremlin>();
 
         case CardNames::CN_Merchant:
-            return new Merchant();
+            return make_shared<Merchant>();
 
         case CardNames::CN_Well:
-            return new Well();
+            return make_shared<Well>();
 
         case CardNames::CN_Treasure:
-            return new Treasure();
+            return make_shared<Treasure>();
 
         case CardNames::CN_Witch:
-            return new Witch();
+            return make_shared<Witch>();
 
         default:
             throw DeckFileFormatError();

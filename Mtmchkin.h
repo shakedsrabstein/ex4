@@ -5,6 +5,9 @@
 #include "Players/Player.h"
 #include "Cards//Card.h"
 #include <queue>
+#include <memory>
+
+using namespace std;
 
 enum class GameStatus {
     Win, Loss, MidGame
@@ -59,15 +62,15 @@ public:
 
 protected:
 
-    queue<Card*> m_cardsQueue;
+    queue<std::shared_ptr<Card>> m_cardsQueue;
 
-    vector<Player*> m_players;
+    vector<shared_ptr<Player>> m_players;
 
-    vector<Player*> m_activePlayers;
+    vector<shared_ptr<Player>> m_activePlayers;
 
-    vector<Player*> m_looserPlayers;
+    vector<shared_ptr<Player>> m_looserPlayers;
 
-    vector<Player*> m_winnerPlayers;
+    vector<shared_ptr<Player>> m_winnerPlayers;
 
     int m_currRound;
 

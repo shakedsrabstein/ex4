@@ -1,4 +1,6 @@
 #include <map>
+#include <memory>
+using namespace std;
 
 // Value-Defintions of the different String values
 
@@ -23,7 +25,7 @@ class CardFactory {
 public:
 
     static void initiateFactory();
-    static Card* createCard(string cardStr);
+    static std::shared_ptr<Card> createCard(string cardStr);
 
 };
 

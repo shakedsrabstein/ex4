@@ -1,8 +1,10 @@
 #include "PlayerFactory.h"
-
 #include "string"
 #include "Player.h"
 #include "Players.h"
+#include <memory>
+
+using namespace std;
 
 // Map to associate the strings with the enum values
 static std::map<std::string, PlayerTypes> s_map_pt_str2enumval;
@@ -18,8 +20,7 @@ void PlayerFactory::initiateFactory() {
 }
 
 
-
-Player* PlayerFactory::createPlayer(std::string playerJob, std::string playerName) {
+shared_ptr<Player> PlayerFactory::createPlayer(std::string playerJob, std::string playerName) {
 
     if (!initiated) {
         PlayerFactory::initiateFactory();
@@ -32,13 +33,13 @@ Player* PlayerFactory::createPlayer(std::string playerJob, std::string playerNam
 
     switch (s_map_pt_str2enumval[playerJob]) {
         case PlayerTypes::PT_Ninga:
-            return new Ninja(playerName);
+            return make_shared<Ninja>(playerName);
 
         case PlayerTypes::PT_Warrior:
-            return new Warrior(playerName);
+            return make_shared<Warrior>(playerName);
 
         case PlayerTypes::PT_Healer:
-            return new Healer(playerName);
+            return make_shared<Healer>(playerName);
 
         default:
             return nullptr;
