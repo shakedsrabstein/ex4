@@ -6,7 +6,7 @@
 
 #include <string>
 #include "../Players/Player.h"
-#include "utilities.h"
+#include "../utilities.h"
 
 
 /**Card: an abstract class of the cards*/

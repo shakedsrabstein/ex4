@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Player.h"
 #include <string>
-#include "utilities.h"
+#include "../utilities.h"
 using namespace std;
 
 //
