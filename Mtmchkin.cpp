@@ -10,8 +10,8 @@
 using namespace std;
 
 // forward declarations
-queue<Card*>* loadCards(const std::string& fileName);
-vector<Player*>* loadPlayers();
+std::shared_ptr<queue<Card*>> loadCards(const std::string& fileName);
+std::shared_ptr<vector<Player*>> loadPlayers();
 bool isValidPlayerName(string basicString);
 Player* getValidPlayerClass(string playerClass);
 
@@ -24,12 +24,6 @@ Mtmchkin::Mtmchkin(const std::string& fileName) : m_looserPlayers() , m_winnerPl
     m_players = *(loadPlayers());
 
     m_activePlayers = m_players;
-
-
-
-
-
-
 }
 
 bool isValidPlayerName(string playerName) {
@@ -71,9 +65,9 @@ int getInt() {
     }
 }
 
-vector<Player*>* loadPlayers() {
+std::shared_ptr<vector<Player*>> loadPlayers() {
     int numPlayers;
-    vector<Player*>* playersVec = new vector<Player*>();
+    std::shared_ptr<vector<Player*>> playersVec = std::make_shared<vector<Player*>>();
 
     printStartGameMessage();
 
@@ -137,9 +131,9 @@ vector<Player*>* loadPlayers() {
 
 
 
-queue<Card*>* loadCards(const std::string& fileName)
+std::shared_ptr<queue<Card*>> loadCards(const std::string& fileName)
 {
-    queue<Card*>* cardsQueue = new queue<Card*>();
+    std::shared_ptr<queue<Card*>> cardsQueue = std::make_shared<queue<Card*>>();
 
     // Open a file for reading
     std::ifstream inputFile(fileName);

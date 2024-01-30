@@ -1919,7 +1919,6 @@ int main(){
     return 0;
 }
 
-
 int mymain(){
     const int MAX_NUMBER_OF_ROUNDS = 100;
     Mtmchkin game("deck.txt");
