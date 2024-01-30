@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++11
+CFLAGS = -std=c++11 -Wall -pedantic-errors -Werror -DNDEBUG
 
 SRCDIR = .
 SRC = $(SRCDIR)/Mtmchkin.cpp \
