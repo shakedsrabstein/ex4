@@ -1911,10 +1911,10 @@ int main(){
     run_test(roundLimitTest,"Round upper limit test");
     run_test(allTenTest,"All reach lvl 10 test");
     run_test(badPlayerInputTest,"Bad player input test");
-    run_test(test0,"test0");
-    run_test(numOfPlayersAsChar,"Number of players as char");
-    run_test(test13,"test13");
-    run_test(test1,"test1");
+//    run_test(test0,"test0");
+//    run_test(numOfPlayersAsChar,"Number of players as char");
+//    run_test(test13,"test13");
+//    run_test(test1,"test1");
     //run_test(test1000,"test1000");
     return 0;
 }

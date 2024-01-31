@@ -17,8 +17,8 @@ public:
     }
     void applyEncounter(Player &player) override;
 private:
-    // testyoav //TODO   static const int GREMLIN_FORCE = 5;
-    static const int GREMLIN_FORCE = 6; // testyoav //TODO
+
+    static const int GREMLIN_FORCE = 5;
     static const int GREMLIN_LOOT = 2;
     static const int GREMLIN_DAMAGE = 10;
 };
