@@ -1895,7 +1895,7 @@ bool test1()
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       Main function          ------------------------------
 
-int main(){
+int testMain(){
     setbuf(stdout,0);
 	run_test(cardsPrintsTest,"cardsPrintsTest");
 	run_test(playersPrintsTest,"playersPrintsTest");
@@ -1919,12 +1919,4 @@ int main(){
     return 0;
 }
 
-int mymain(){
-    const int MAX_NUMBER_OF_ROUNDS = 100;
-    Mtmchkin game("deck.txt");
-    while(!game.isGameOver() && game.getNumberOfRounds() < MAX_NUMBER_OF_ROUNDS){
-        game.playRound();
-    }
-    game.printLeaderBoard();
-    return 0;
-}
+

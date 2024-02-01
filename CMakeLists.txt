@@ -11,6 +11,7 @@ add_executable(ex4
         Players/Player.cpp
         Players/Player.h
         test.cpp
+        main.cpp
         utilities.cpp
         utilities.h
         Exception.h
