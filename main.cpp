@@ -9,7 +9,7 @@ int main() {
             game.playRound();
         }
         game.printLeaderBoard();
-    } catch (exception ex) {
+    } catch (const exception& ex) {
         cout << ex.what() << endl;
     }
 }
