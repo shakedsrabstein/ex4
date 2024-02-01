@@ -103,7 +103,7 @@ shared_ptr<vector<shared_ptr<Player>>> loadPlayers() {
                 printInsertPlayerMessage();
             }
 
-            getline(cin, playerName, ' '); // Read the name until space
+            getline(cin >> ws, playerName, ' '); // Read the name until space
             playerName.erase(0, playerName.find_first_not_of(" \t\n\r\f\v"));
             getline(cin >> ws, playerJob);
             playerJob.erase(0, playerJob.find_first_not_of(" \t\n\r\f\v"));
@@ -156,7 +156,7 @@ shared_ptr<queue<shared_ptr<Card>>> loadCards(const std::string& fileName)
         lineNum++;
     }
 
-    if (1 == lineNum) {
+    if (lineNum <= 5) {
         throw DeckFileInvalidSize();
     }
 
